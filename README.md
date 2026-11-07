@@ -1,276 +1,237 @@
 # National Gas Network Operations Intelligence System
 
-##  Project Status
+**Energy, Supply Chain & Operations Analytics Portfolio Project**
 
-**Project in Progress**
+**Project Status:** In Progress
 
-This project is part of my **Energy, Supply Chain & Operations Analytics Portfolio**.
+## 1. Project Overview
 
-The project uses publicly accessible National Gas operational data to explore gas-network flow patterns, linepack conditions, and operational performance.
+The National Gas Network Operations Intelligence System is an independent analytics project focused on understanding gas transmission network performance using publicly accessible operational data from National Gas.
 
----
+The project will examine gas flow patterns, entry-point supply, linepack conditions, network performance, and operational variations over time.
 
-## 🇬🇧 Project Context
+Using Python, Jupyter Notebook, Pandas, MySQL, and Power BI, the project aims to transform operational data into meaningful insights that support gas network monitoring and operational decision-making.
 
-**National Gas** operates Great Britain's gas transmission network.
+**Industry Context:** National Gas operates Great Britain's gas transmission network. This project uses its publicly accessible operational data as the basis for an independent energy and operations analytics case study.
 
-This project focuses on using operational data to understand:
+**Disclaimer:** This is an independent portfolio project. It is not affiliated with National Gas and does not represent its internal operational systems or official business decisions.
 
-* Gas flow
-* Entry-point supply
-* Linepack
-* Time-based operational patterns
-* Flow anomalies
-* Network conditions
+## 2. Business Problem
 
----
+Gas transmission networks must maintain a continuous balance between gas entering and leaving the network while managing network conditions and available transportation capacity.
 
-##  Problem Statement
+Changes in gas flows, entry-point supply, and linepack can provide important information about network performance and operational conditions.
 
-Gas transmission networks must continuously balance gas entering the network with gas leaving the network while maintaining appropriate network conditions.
+Without effective analysis of operational data, it can be difficult to identify:
 
-Operational data can provide valuable information about changes in supply, flow, and linepack.
+- Significant changes in gas flow across entry points.
+- Variations in supply patterns throughout the gas day.
+- Periods of unusual flow behaviour.
+- Differences between actual and scheduled flows, where data is available.
+- Changes in linepack and network balancing conditions.
+- Operational periods that may require further investigation.
 
-The analytical question for this project is:
+This project explores how data analytics can improve visibility into gas transmission operations and support data-driven operational monitoring.
 
-**Can operational gas-flow data be analysed to identify unusual flow patterns and periods requiring operational attention?**
+**Main Business Question:**
 
----
+Can publicly accessible gas transmission operational data be analysed to identify unusual flow patterns, monitor network performance, and provide useful operational insights?
 
-##  Proposed Solution
+## 3. Project Objectives
 
-I plan to build a:
+The objectives are to:
 
-### **National Gas Network Operations Intelligence System**
+1. Retrieve operational data from the National Gas API.
+2. Understand and process API responses in JSON format.
+3. Explore gas flow patterns across available sites and operational periods.
+4. Assess the quality and consistency of the collected data.
+5. Clean and prepare operational datasets using Python and Pandas.
+6. Store prepared datasets in MySQL.
+7. Analyse gas flows and operational performance using SQL.
+8. Develop relevant gas transmission operational KPIs.
+9. Build an interactive Power BI dashboard.
+10. Communicate findings and data-driven operational recommendations.
 
-The project will use operational API data to develop an analytical workflow covering:
+## 4. Scope of Analysis
 
-REST API
-   ↓
-JSON Response
-   ↓
-Python
-   ↓
-Pandas
-   ↓
-Data Structure Assessment
-   ↓
-Data Quality Assessment
-   ↓
-Data Cleaning
-   ↓
-MySQL
-   ↓
-Operational Analysis
-   ↓
-Power BI
+### Gas Flow Analysis
 
----
+- Gas flow patterns across available entry points.
+- Flow variations over time.
+- Highest and lowest recorded flow rates.
+- Average flow rates.
+- Gas supply patterns across sites.
 
-##  Data Source
+### Entry-Point Supply Analysis
 
-The project uses the **National Gas operational data API**.
+- Gas supply by entry site.
+- Contribution of individual entry points to recorded flows.
+- Changes in supply patterns.
+- Comparisons between entry points.
 
-The initial API endpoint being explored provides instantaneous flow information by site.
+### Linepack and Network Balancing
 
-The response contains information related to:
+- Linepack levels and changes, where supported by the available data.
+- Relationship between gas entering and leaving the network.
+- Network balancing patterns.
+- Periods requiring further investigation.
 
-* Publication time
-* Current gas day
-* Site
-* Flow rate
-* Applicable time
-* Quality indicator
-* Schedule time
+### Operational Performance Monitoring
 
----
+- Flow variability.
+- Actual versus scheduled flow, where the necessary data is available.
+- Operational exceptions.
+- Time-based performance patterns.
+- Network performance indicators.
 
-##  Key Analytical Questions
+## 5. Data Sources
 
-1. How does gas flow vary by entry site?
-2. What are the highest and lowest flow periods?
-3. How does flow change throughout the gas day?
-4. What patterns can be observed across sites?
-5. Are there unusual flow observations?
-6. How does actual flow compare with scheduled flow where the required data is available?
-7. How does linepack change over time?
-8. Can operational KPIs provide early visibility into unusual network conditions?
+The project uses the publicly accessible **National Gas Operational Data API**.
 
----
+API base URL:
 
-##  Data Engineering Process
+`https://api.nationalgas.com/operationaldata/v1`
 
-### 1. API Data Collection
+The initial endpoint explored is the Instantaneous Flow endpoint, which provides operational flow information across available sites.
 
-Retrieve operational data programmatically using Python.
+The API data being explored includes fields relating to:
 
-### 2. JSON Exploration
+- Publication time.
+- Current gas day.
+- Operational category.
+- Site name.
+- Flow rate.
+- Quality indicator.
+- Schedule time.
 
-Understand the structure of the API response.
+The exact fields, availability, units, and limitations will be documented after examining the retrieved datasets.
 
-### 3. JSON Flattening
+Data collection and analysis will respect the API's documentation, access requirements, and historical data limitations.
 
-Use Pandas techniques such as: 
-pd.json_normalize() to convert nested JSON into tabular data.
+## 6. Tools and Technologies
 
-### 4. Data Structure Assessment
+| Tool | Purpose |
+|---|---|
+| REST API | Access operational data |
+| Python | API data acquisition and analysis |
+| Requests | Send API requests |
+| JSON | Handle API responses |
+| Jupyter Notebook | Document and execute analytical workflows |
+| Pandas | Flatten, manipulate, assess, and clean datasets |
+| MySQL | Structured data storage and SQL analysis |
+| Power BI | Interactive dashboards and visualizations |
+| GitHub | Documentation and version control |
 
-Examine:
+## 7. Key Performance Indicators (KPIs)
 
-* Columns
-* Data types
-* Nested structures
-* Record counts
-* Relationships
-* Timestamp fields
+The project will investigate the following potential KPIs, depending on the actual data fields and measurements available.
 
-### 5. Data Quality Assessment
+| KPI | Description |
+|---|---|
+| Total Gas Flow | Total recorded gas flow over a defined period |
+| Average Flow Rate | Average recorded flow rate |
+| Maximum Flow Rate | Highest recorded flow rate |
+| Minimum Flow Rate | Lowest recorded flow rate |
+| Flow by Entry Site | Recorded flow grouped by entry site |
+| Flow Variability | Changes in flow over time |
+| Scheduled vs Actual Flow | Difference between scheduled and actual flow, where available |
+| Linepack Level | Recorded network linepack level, where available |
+| Linepack Change | Change in linepack over a defined period |
+| Operational Exception Count | Number of observations meeting documented exception criteria |
 
-Check for:
+KPI definitions, formulas, units, assumptions, and limitations will be documented before calculations are performed.
 
-* Missing values
-* Duplicate records
-* Invalid timestamps
-* Unexpected values
-* Inconsistent categories
-* Data-type problems
+## 8. Project Workflow
 
-### 6. Data Cleaning
+The project will follow this analytical workflow:
 
-Clean and transform the dataset for analysis.
+1. Identify and understand the National Gas API.
+2. Retrieve operational data using Python and Requests.
+3. Explore API responses and JSON structures.
+4. Perform exploratory data analysis using Python and Jupyter Notebook.
+5. Assess data quality using Python and Jupyter Notebook.
+6. Clean and prepare the operational datasets using Python and Pandas.
+7. Store prepared datasets in MySQL.
+8. Perform gas flow and network operations analysis using SQL.
+9. Calculate relevant operational KPIs.
+10. Develop an interactive Power BI dashboard.
+11. Document analytical findings and operational recommendations.
 
-### 7. MySQL Storage
+## 9. Repository Structure
 
-Store the cleaned operational data in a relational database.
-
-### 8. Analysis
-
-Use SQL and Python to investigate operational patterns.
-
-### 9. Visualization
-
-Develop a Power BI operational dashboard.
-
----
-
-##  Planned KPIs
-
-Potential KPIs include:
-
-* Total Gas Flow
-* Average Flow Rate
-* Maximum Flow Rate
-* Minimum Flow Rate
-* Flow by Entry Site
-* Flow Variability
-* Scheduled vs Actual Flow
-* Linepack Level
-* Linepack Change
-* Operational Exception Count
-
----
-
-##  Technologies
-
-* REST API
-* Python
-* Requests
-* JSON
-* Pandas
-* NumPy
-* MySQL
-* SQL
-* Power BI
-* Data Quality Assessment
-* Data Cleaning
-* Operations Analytics
-* Supply Chain Analytics
-
----
-
-##  Planned Project Structure
-
-national-gas-network-operations-intelligence/
+```text
+national-gas-network-operations-intelligence-system/
+│
+├── README.md
 │
 ├── data/
-│
-├── api/
-│   └── national_gas_api.py
+│   ├── raw/
+│   └── processed/
 │
 ├── python/
-│   ├── 01_api_data_collection.py
-│   ├── 02_json_exploration.py
-│   ├── 03_json_flattening.py
-│   ├── 04_data_structure_assessment.py
-│   ├── 05_data_quality_assessment.py
-│   ├── 06_data_cleaning.py
-│   └── 07_operational_analysis.py
+│   ├── 01_data_acquisition.ipynb
+│   ├── 02_exploratory_data_analysis.ipynb
+│   ├── 03_data_quality_assessment.ipynb
+│   └── 04_data_cleaning_and_preparation.ipynb
 │
-├── sql/
-│   ├── 01_data_exploration.sql
-│   ├── 02_data_quality.sql
-│   ├── 03_data_cleaning.sql
-│   └── 04_operational_analysis.sql
+├── mysql/
+│   ├── 01_database_setup.sql
+│   ├── 02_gas_flow_analysis.sql
+│   ├── 03_entry_point_analysis.sql
+│   ├── 04_operational_kpi_calculations.sql
+│   └── 05_network_performance_analysis.sql
 │
-├── powerbi/
+├── power_bi/
+│   ├── dashboard/
+│   └── screenshots/
 │
-├── visuals/
+├── reports/
+│   ├── data_quality_report.md
+│   ├── gas_flow_analysis.md
+│   ├── entry_point_analysis.md
+│   └── operational_insights.md
 │
-└── README.md
+├── docs/
+│   ├── data_sources.md
+│   ├── data_dictionary.md
+│   └── kpi_definitions.md
+│
+├── requirements.txt
+│
+└── .gitignore
+```
+
+## 10. Expected Deliverables
+
+- Documented National Gas API data source.
+- Collected raw operational datasets.
+- Processed and validated datasets.
+- Python/Jupyter data acquisition and preparation notebooks.
+- MySQL database and SQL analysis scripts.
+- Gas transmission operational KPI calculations.
+- Interactive Power BI dashboard.
+- Data quality and analytical reports.
+- Operational insights and recommendations.
+
+## 11. Business Value
+
+This project demonstrates how supply chain and operations analytics can support gas transmission network monitoring and performance analysis.
+
+The intended business value includes:
+
+- Improved visibility into gas flow patterns.
+- Better understanding of entry-point supply performance.
+- Monitoring of network balancing indicators.
+- Identification of unusual operational patterns.
+- Improved understanding of time-based network performance.
+- Data-driven support for operational investigation and decision-making.
+
+## 12. Project Disclaimer
+
+This is an independent educational and professional portfolio project developed using publicly accessible operational data.
+
+It does not represent National Gas's internal systems, confidential operational information, official forecasts, or management recommendations.
 
 ---
 
-##  Project Roadmap
-
-*  Identify National Gas API
-*  Understand API endpoint
-*  Test API request
-*  Retrieve JSON response
-*  Explore nested JSON structure
-*  Flatten JSON using Pandas
-*  Perform data structure assessment
-*  Perform data quality assessment
-*  Clean the dataset
-*  Store data in MySQL
-*  Perform operational analysis
-*  Develop operational KPIs
-*  Build Power BI dashboard
-*  Document findings
-*  Publish final portfolio project
-
----
-
-##  Skills Demonstrated
-
-### API & Data Engineering
-
-* REST APIs
-* API data extraction
-* JSON processing
-* Data transformation
-* Pandas
-* MySQL
-
-### Data Analytics
-
-* Exploratory Data Analysis
-* Data Quality Assessment
-* Data Cleaning
-* Time-series analysis
-* KPI development
-
-### Energy & Operations Analytics
-
-* Gas-flow analysis
-* Network operations
-* Linepack monitoring
-* Operational exception analysis
-* Energy supply-chain analytics
-
----
-
-##  Disclaimer
-
-This is an independent educational portfolio project using publicly accessible operational data.
-
-It is not an official National Gas system and does not represent National Gas's internal operational processes, systems, forecasts, or management decisions.
+**Focus Areas:** Supply Chain Analytics | Operations Analytics | Gas Transmission | Network Performance | Gas Flow Analysis | Energy Analytics | Oil & Gas
